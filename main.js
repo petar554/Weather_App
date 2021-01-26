@@ -1,4 +1,5 @@
 const input = document.querySelector('input');
+const data = document.getElementById('data');
 
 const fetchData = async (searchTerm) => {
     const response = await axios.get('http://api.openweathermap.org//data/2.5/weather?', {
@@ -13,7 +14,11 @@ const fetchData = async (searchTerm) => {
         return [];
     }
 
-    return response.data
+    const info = document.createElement('div');
+    info.innerHTML = response.data.main.temp;
+    data.appendChild(info);
+
+    console.log(response.data)
 }
 
 let timeoutId;
