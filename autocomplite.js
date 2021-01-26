@@ -1,0 +1,1 @@
+const createAutocomplite = ({ rootElement, fetchData })

@@ -27,15 +27,25 @@
     <title>Weather App</title>
   </head>
   <body>
-    <nav class="navbar navbar-light bg-light mb-5">
-      <a class="navbar-brand" href="#">
-        <h1><b>Wetaher App</b></h1>
-      </a>
-    </nav>
+    <section class="hero is-warning">
+      <div class="hero-body">
+        <div class="container">
+          <h1 class="title">Weather App</h1>
+          <h2 class="subtitle">Choose a city</h2>
+        </div>
+      </div>
+    </section>
 
     <input />
-    <div id="data"></div>
+    <div class="container">
+      <div class="columns">
+        <div class="column">
+          <div id="autocomplete"></div>
+        </div>
+      </div>
+    </div>
 
+    <script src="autocomplite.js"></script>
     <script src="main.js"></script>
   </body>
 </html>
