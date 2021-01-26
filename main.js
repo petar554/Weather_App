@@ -1,27 +1,31 @@
 const input = document.querySelector('input');
 const data = document.getElementById('data');
 
-const fetchData = async (searchTerm) => {
-    const response = await axios.get('http://api.openweathermap.org//data/2.5/weather?', {
-        params: {
-            q: searchTerm,
-            appid: '06b8dbc1b469c1a8509ab3fd20ded3d0',
-            units: 'metric'
+createAutocomplite({
+    rootElement: document.querySelector('#autocomplete'),
+    async fetchData(searchTerm) {
+        const response = await axios.get('http://api.openweathermap.org//data/2.5/weather?', {
+            params: {
+                q: searchTerm,
+                appid: '06b8dbc1b469c1a8509ab3fd20ded3d0',
+                units: 'metric'
+            }
+        });
+
+        if (response.data.Error) {
+            return [];
         }
-    });
 
-    if (response.data.Error) {
-        return [];
-    }
+        const info = document.createElement('div');
+        info.innerHTML = response.data.main.temp;
+        data.appendChild(info);
 
-    const info = document.createElement('div');
-    info.innerHTML = response.data.main.temp;
-    data.appendChild(info);
+        console.log(response.data)
+    },
+})
 
-    console.log(response.data)
-}
 
-let timeoutId;
+/* let timeoutId;
 const onInput = event => {
     if (timeoutId) {
         clearInterval(timeoutId);
@@ -32,4 +36,4 @@ const onInput = event => {
 }
 
 input.addEventListener('input', onInput);
-
+ */
