@@ -15,25 +15,7 @@ createAutocomplite({
         if (response.data.Error) {
             return [];
         }
-
-        const info = document.createElement('div');
-        info.innerHTML = response.data.main.temp;
-        data.appendChild(info);
-
-        console.log(response.data)
+        return response.data;
     },
 })
 
-
-/* let timeoutId;
-const onInput = event => {
-    if (timeoutId) {
-        clearInterval(timeoutId);
-    }
-    timeoutId = setTimeout(() => {
-        fetchData(event.target.value);
-    }, 500)
-}
-
-input.addEventListener('input', onInput);
- */
