@@ -11,26 +11,29 @@ const createAutocomplite = ({ rootElement, fetchData }) => {
     const input = rootElement.querySelector('input');
     const dropdown = rootElement.querySelector('.dropdown');
     const results = rootElement.querySelector('.results');
-    let items;
     let timeoutId;
 
-    const onInput = event => {
+    const onInput = (event, delay = 1000) => {
         if (timeoutId) {
             clearInterval(timeoutId);
         }
+
+        if (!event.target.value) {
+            dropdown.classList.remove('is-active');
+        }
+
+        results.innerHTML = '';
         timeoutId = setTimeout(() => {
-            items = fetchData(event.target.value).then(res => {
+            const items = fetchData(event.target.value).then(res => {
+                dropdown.classList.add('is-active');
                 const anchor = document.createElement('a');
                 anchor.classList.add('dropdown-item');
                 anchor.innerHTML = `<h1>${res.name}</h1>`;
                 console.log(anchor);
                 results.appendChild(anchor);
             })
-        }, 1000)
+        }, delay)
     }
-
-    dropdown.classList.add('is-active');
-    console.log(items);
 
     input.addEventListener('input', onInput)
 }
