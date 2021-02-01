@@ -42,7 +42,14 @@ const createAutocomplite = ({ rootElement, fetchData }) => {
     }
 
     input.addEventListener('input', onInput)
+
+    document.addEventListener('click', event => {
+        if (!rootElement.contains(event.target)) {
+            dropdown.classList.remove('is-active');
+        }
+    })
 }
+    
 
 
 
