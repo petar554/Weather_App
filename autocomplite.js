@@ -1,9 +1,15 @@
 const createAutocomplite = ({ rootElement, fetchData }) => {
     rootElement.innerHTML = `
-    <input class="input">
-    <div class="dropdown">
-        <div class="dropdown-menu">
-            <div class="dropdown-content results">
+    <div class="container">
+        <div class="columns">
+            <div class="column is-one-third">
+                <input class="input mt-5">
+                <div class="dropdown">
+                    <div class="dropdown-menu">
+                        <div class="dropdown-content results">
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -37,5 +43,7 @@ const createAutocomplite = ({ rootElement, fetchData }) => {
 
     input.addEventListener('input', onInput)
 }
+
+
 
 
