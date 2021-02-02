@@ -43,9 +43,7 @@ const createAutocomplite = ({ rootElement, fetchData, chooseACity, aboutCity }) 
                     chooseACity(fetchData, res, document.querySelector('#summary'));
                 });
             })
-        }, delay)
-
-
+        }, delay);
     }
 
     input.addEventListener('input', onInput)
