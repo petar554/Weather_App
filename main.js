@@ -15,6 +15,19 @@ createAutocomplite({
         if (response.data.Error) {
             return [];
         }
+
         return response.data;
     },
-})
+    chooseACity(func, city, el) {
+        //console.log(this.func())
+        func(city.name);
+        //const data = this.func(city.name);
+        el.innerHTML = aboutCity(city);
+    }
+});
+
+
+function aboutCity(info) {
+    return `<h1>${info.name}</h1>`
+}
+
