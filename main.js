@@ -1,5 +1,6 @@
 const input = document.querySelector('input');
 const data = document.getElementById('data');
+const summary = document.querySelector('#summary')
 
 createAutocomplite({
     rootElement: document.querySelector('#autocomplete'),
@@ -18,11 +19,15 @@ createAutocomplite({
         console.log(response.data)
         return response.data;
     },
-    chooseACity(func, city, el) {
-
-        console.log(func(city.name))
+    chooseACity(func, city, summary) {
+        //console.log(func(city.name))
         func(city.name);
-        el.innerHTML = aboutCity(city);
+        summary.innerHTML = aboutCity(city);
+    },
+    renderOption(city) {
+        return `
+         <h1>${city.name}</h1>
+        `
     }
 });
 

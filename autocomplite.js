@@ -1,4 +1,4 @@
-const createAutocomplite = ({ rootElement, fetchData, chooseACity, aboutCity }) => {
+const createAutocomplite = ({ rootElement, fetchData, chooseACity, renderOption }) => {
     rootElement.innerHTML = `
     <div class="container">
         <div class="columns">
@@ -34,13 +34,12 @@ const createAutocomplite = ({ rootElement, fetchData, chooseACity, aboutCity }) 
                 dropdown.classList.add('is-active');
                 const anchor = document.createElement('a');
                 anchor.classList.add('dropdown-item');
-                anchor.innerHTML = `<h1>${res.name}</h1>`;
-                console.log(anchor);
+                anchor.innerHTML = renderOption(res);
                 results.appendChild(anchor);
                 anchor.addEventListener('click', () => {
                     //console.log(res)
                     dropdown.classList.remove('is-active');
-                    chooseACity(fetchData, res, document.querySelector('#summary'));
+                    chooseACity(fetchData, res, el);
                 });
             })
         }, delay);
@@ -52,7 +51,7 @@ const createAutocomplite = ({ rootElement, fetchData, chooseACity, aboutCity }) 
         if (!rootElement.contains(event.target)) {
             dropdown.classList.remove('is-active');
         }
-    })
+    });
 }
 
 
