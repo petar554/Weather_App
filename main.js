@@ -29,10 +29,10 @@ createAutocomplite({
 
 function aboutCity(info) {
     return `<h1>${info.name}</h1>
-    <h2>${info.main.temp}</h2>
-    <h3>${info.main.feels_like}</h3>
-    <h4>${info.main.temp_min}</h4>
-    <h4>${info.main.temp_max}</h4>
+    <h2>Temperature: <b>${info.main.temp}</b></h2>
+    <h3>Feels like: <b>${info.main.feels_like}</b></h3>
+    <h4>Min Temperature: <b>${info.main.temp_min}</b></h4>
+    <h4>Max Temperature: <b>${info.main.temp_max}</b></h4>
     `
 }
 
