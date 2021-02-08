@@ -1,9 +1,9 @@
 const input = document.querySelector('input');
 const data = document.getElementById('data');
-const summary = document.querySelector('#summary')
 
 createAutocomplite({
     rootElement: document.querySelector('#autocomplete'),
+    summary: document.getElementById('summary'),
     async fetchData(searchTerm) {
         const response = await axios.get('http://api.openweathermap.org//data/2.5/weather?', {
             params: {
@@ -19,10 +19,10 @@ createAutocomplite({
         console.log(response.data)
         return response.data;
     },
-    chooseACity(func, city, summary) {
+    chooseACity(func, city, el) {
         //console.log(func(city.name))
         func(city.name);
-        summary.innerHTML = aboutCity(city);
+        el.innerHTML = aboutCity(city);
     },
     renderOption(city) {
         return `

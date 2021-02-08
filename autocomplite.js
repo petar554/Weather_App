@@ -1,4 +1,4 @@
-const createAutocomplite = ({ rootElement, fetchData, chooseACity, renderOption }) => {
+const createAutocomplite = ({ rootElement, summary, fetchData, chooseACity, renderOption }) => {
     rootElement.innerHTML = `
     <div class="container">
         <div class="columns">
@@ -23,7 +23,6 @@ const createAutocomplite = ({ rootElement, fetchData, chooseACity, renderOption 
         if (timeoutId) {
             clearInterval(timeoutId);
         }
-
         if (!event.target.value) {
             dropdown.classList.remove('is-active');
         }
@@ -39,7 +38,7 @@ const createAutocomplite = ({ rootElement, fetchData, chooseACity, renderOption 
                 anchor.addEventListener('click', () => {
                     //console.log(res)
                     dropdown.classList.remove('is-active');
-                    chooseACity(fetchData, res, el);
+                    chooseACity(fetchData, res, summary);
                 });
             })
         }, delay);
